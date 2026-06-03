@@ -1,5 +1,5 @@
 Todo List
 
-Course: JavaScript
-Path: Full Stack JavaScript
+Course: JavaScript<br>
+Path: Full Stack JavaScript<br>
 The Odin Project
