@@ -1,0 +1,1 @@
+Webpack template for future repositories.
