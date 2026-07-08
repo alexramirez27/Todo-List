@@ -1,5 +1,5 @@
 // View.js
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 
 class View {
     #slideIn() {
@@ -368,7 +368,8 @@ class View {
 
                     title.value = todo.title;
                     description.value = todo.description;
-                    dueDate.value = format(new Date(todo.dueDate), "yyyy-MM-dd");
+                    // dueDate.value = format(new Date(todo.dueDate), "yyyy-MM-dd");
+                    dueDate.value = format(parse(todo.dueDate, "MMMM d, yyyy", new Date()), "yyyy-MM-dd");
                     priority.value = todo.priority;
                     
                     this.#openModal("modify-todo-dialog");

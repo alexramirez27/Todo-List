@@ -93,7 +93,8 @@ class Controller {
             const dueDateInput = document.querySelector(".create-todo-dialog #due_date");
             const priorityInput = document.querySelector(".create-todo-dialog #priority");
 
-            const dueDateText = format(dueDateInput.value, "MMMM d, yyyy");
+            // const dueDateText = format(dueDateInput.value, "MMMM d, yyyy");
+            const dueDateText = format(parseISO(dueDateInput.value), "MMMM d, yyyy");
 
             if (currPage.currentProject.titleInSet(titleInput.value)) {
                 alert("Cannot create To-Do! Another To-Do with the same name has already been created in this project!");
@@ -130,7 +131,8 @@ class Controller {
             const dueDateInput = document.querySelector(".modify-todo-dialog #due_date");
             const priorityInput = document.querySelector(".modify-todo-dialog #priority");
 
-            const dueDateText = format(dueDateInput.value, "MMMM d, yyyy");
+            // const dueDateText = format(dueDateInput.value, "MMMM d, yyyy");
+            const dueDateText = format(parseISO(dueDateInput.value), "MMMM d, yyyy");
 
             currTodo.title = titleInput.value;
             currTodo.description = descInput.value;
