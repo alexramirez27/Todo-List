@@ -24,9 +24,7 @@ class Controller {
 
         this.saveToLocalStorage();
 
-        // this.#view.displayPageContent(page, (p, id, num, title) => this.#handleDeleteProject(p, id, num, title));
         this.#displayCurrentPage();
-        // this.#planner.printMap();
 
         // Update select menu options
         const selectProjects = document.querySelector("#projects");
@@ -63,7 +61,6 @@ class Controller {
             currPage.addProject(project);
 
             this.#planner.addProjectTitleAndPageNum(titleInput.value, this.#planner.currPageNum);
-            // this.#planner.printMap();
 
             // Save to local storage
             this.saveToLocalStorage();
@@ -74,7 +71,6 @@ class Controller {
             // Push the project title to the select projects menu
             this.#view.addProjectToSelectMenu(project);
 
-            // this.#view.displayPageContent(currPage, (p, id, num, title) => this.#handleDeleteProject(p, id, num, title));
             this.#displayCurrentPage();
         });
     }
@@ -114,7 +110,6 @@ class Controller {
             form.reset();
             dialog.close();
 
-            // this.#view.displayPageContent(currPage, (p, id, num, title) => this.#handleDeleteProject(p, id, num, title));
             this.#displayCurrentPage();
         });
     }
@@ -124,22 +119,11 @@ class Controller {
         const form = dialog.querySelector("form");
 
         form.addEventListener("submit", (event) => {
-            // console.log("yo");
             event.preventDefault();
 
             const currPage = this.#planner.pages[this.#planner.currPageNum];
 
-            // const currProject = currPage.currentProject;
-
             const currTodo = currPage.currentTodo;
-
-            // console.log(`projectTitle = ${currProject.projectTitle}`);
-            // currProject.printTitleSet();
-
-            // Get the current todo
-            // const todo = currProject.todos.find(todo => todo.title === currTodo.title);
-            // console.log(`typeof todo: ${typeof todo}`);
-            // todo.printTitleSet();
 
             const titleInput = document.querySelector(".modify-todo-dialog #title");
             const descInput = document.querySelector(".modify-todo-dialog #description");
@@ -148,7 +132,6 @@ class Controller {
 
             const dueDateText = format(dueDateInput.value, "MMMM d, yyyy");
 
-            // console.log(`todo.title = ${todo.title}`);
             currTodo.title = titleInput.value;
             currTodo.description = descInput.value;
             currTodo.dueDate = dueDateText;
@@ -159,7 +142,6 @@ class Controller {
             form.reset();
             dialog.close();
 
-            // this.#view.displayPageContent(currPage, (p, id, num, title) => this.#handleDeleteProject(p, id, num, title));
             this.#displayCurrentPage();
         });
     } 
@@ -197,7 +179,6 @@ class Controller {
             dimOverlay.classList.remove('active');
             aside.style.transform = "translateX(calc(-100% - 10px))";
 
-            // this.#view.displayPageContent(selectedPage, (p, id, num, title) => this.#handleDeleteProject(p, id, num, title));
             this.#displayCurrentPage();
         });
     }
@@ -216,8 +197,6 @@ class Controller {
 
             this.#planner.currPageNum = Number(pageNum);
             this.saveToLocalStorage();  
-            // console.log(`pageNum = ${pageNum}`);
-            // console.log(`title = ${title}`);
 
             form.reset();
             dialog.close();
@@ -228,28 +207,20 @@ class Controller {
             dimOverlay.classList.remove('active');
             aside.style.transform = "translateX(calc(-100% - 10px))";
 
-            // const selectedPage = this.#planner.pages[pageNum];
             const selectedPage = this.#planner.pages[this.#planner.currPageNum];
-            // this.#view.displayPageContent(selectedPage, (p, id, num, title) => this.#handleDeleteProject(p, id, num, title));
             this.#displayCurrentPage();
         });
     }
 
     #enablePrevAndNextListeners() {
-        // const currPage = this.#planner.pages[this.#planner.currPageNum];
-        // console.log(`this.#planner.pages.length = ${this.#planner.pages.length}`);
-
         // Decrement page number
         const prevBtn = document.querySelector("#prev-page");
         prevBtn.addEventListener("click", () => {
-            // console.log("clicked on the previous page button!");
-            // console.log(`currPageNum = ${this.#planner.currPageNum}`);
             if (this.#planner.currPageNum > 0) {
                 this.#planner.decrementPageNum();
                 this.saveToLocalStorage();
                 // Display page content
                 const currPage = this.#planner.pages[this.#planner.currPageNum];
-                // this.#view.displayPageContent(currPage, (p, id, num, title) => this.#handleDeleteProject(p, id, num, title));
                 this.#displayCurrentPage();
             } else {
                 alert("Cannot go to the previous page because this is the first day of 2026!");
@@ -259,14 +230,11 @@ class Controller {
         // Increment page number
         const nextBtn = document.querySelector("#next-page");
         nextBtn.addEventListener("click", () => {
-            // console.log("clicked on the next page button!");
-            // console.log(`currPageNum = ${this.#planner.currPageNum}`);
             if (this.#planner.currPageNum < 364) {
                 this.#planner.incrementPageNum();
                 this.saveToLocalStorage();
                 // Display page content
                 const currPage = this.#planner.pages[this.#planner.currPageNum];
-                // this.#view.displayPageContent(currPage, (p, id, num, title) => this.#handleDeleteProject(p, id, num, title));
                 this.#displayCurrentPage();
             } else {
                 alert("Cannot go to the next page because this is the last day of 2026!");
@@ -323,8 +291,6 @@ class Controller {
         this.#enablePrevAndNextListeners();
 
         this.#view.viewInit();
-        // const janFirstPage = this.#planner.pages[0];
-        // this.#view.displayPageContent(janFirstPage, (p, id, num, title) => this.#handleDeleteProject(p, id, num, title));
 
         this.#planner.projTitlesAndPageNums.forEach((pageNum, title) => {
             this.#view.addProjectToSelectMenu({

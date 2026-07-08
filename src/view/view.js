@@ -340,7 +340,6 @@ class View {
 
             // Display todos
             const todos = project.todos;
-            // console.log(`Number of todos: ${todos.length}`);
             todos.forEach(todo => {
                 const todoTitle = document.createElement("h2");
                 todoTitle.classList.add("todo-text");
@@ -400,15 +399,12 @@ class View {
                 // Event listeners for todo buttons
                 deleteTodoBtn.addEventListener("click", (event) => {
                     event.stopPropagation();
-                    // project.deleteTodo(todo.todoId);
-                    // this.displayPageContent(page);
                     onDeleteTodo(project, todo.todoId);
                 });
 
                 markCompleteBtn.addEventListener("click", (event) => {
                     event.stopPropagation();
                     todoDiv.classList.toggle("line-through");
-                    // todo.toggleComplete();
                     onToggleTodo(todo);
                 });
 
@@ -417,8 +413,6 @@ class View {
 
                 projectBlock.appendChild(todoDiv);
             });
-
-            // project.printTitleSet();
         });
     }
 
@@ -435,12 +429,8 @@ class View {
         this.#enableModalListener("div-date", "go-to-date-dialog");
         this.#enableModalListener("div-projects", "projects-dialog");
         this.#enableModalListener("btn-create-project", "create-project-dialog");
-        // Enable modal listener for when a todo is clicked
-        // this.#enableModalListener("todo-div", "modify-todo-dialog", false);
         this.#enableCancelBtnListeners();
     }
 }
 
 export default View;
-
-// export { slideIn, slideOut, enableBrightnessModes, changeColorTheme };
