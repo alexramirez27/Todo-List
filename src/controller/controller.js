@@ -93,7 +93,6 @@ class Controller {
             const dueDateInput = document.querySelector(".create-todo-dialog #due_date");
             const priorityInput = document.querySelector(".create-todo-dialog #priority");
 
-            // const dueDateText = format(dueDateInput.value, "MMMM d, yyyy");
             const dueDateText = format(parseISO(dueDateInput.value), "MMMM d, yyyy");
 
             if (currPage.currentProject.titleInSet(titleInput.value)) {
@@ -244,7 +243,8 @@ class Controller {
         });
     }
 
-    #displayCurrentPage() {
+    #displayCurrentPage(pageDay = this.#planner.currPageNum) {
+        this.#planner.currPageNum = pageDay;
         const currPage = this.#planner.pages[this.#planner.currPageNum];
 
         this.#view.displayPageContent(
@@ -301,7 +301,15 @@ class Controller {
             });
         });
 
-        this.#displayCurrentPage();
+        const today = new Date();
+        const daysSinceJan1 = differenceInCalendarDays(today, new Date(2026, 0, 1));
+        console.log(`daysSinceJan1 = ${daysSinceJan1}`);
+
+        if (today.getFullYear() !== 2026) {
+            this.#displayCurrentPage();
+        } else {
+            this.#displayCurrentPage(daysSinceJan1);
+        }
     }
 }
 

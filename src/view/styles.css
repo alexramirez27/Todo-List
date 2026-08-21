@@ -83,7 +83,6 @@ body {
   z-index: 15;                         
   opacity: 0;                           
   pointer-events: none;                 
-  /* transition: opacity 0.3s ease;         */
 }
 
 .overlay.active {
@@ -100,15 +99,11 @@ header {
   justify-content: space-between;
   padding: 16px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-  /* position: sticky;
-  top: 0;
-  z-index: 12; */
 }
 
 .orb-and-gear {
   display: flex;
   gap: 16px;
-  /* align-items: center; */
 }
 
 .orb-and-gear > * {
@@ -127,7 +122,6 @@ aside {
   box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.25);
   position: absolute;
   height: 100%;
-  /* transition: 0.3s ease-in-out; */
   transform: translateX(calc(-100% - 10px));
   z-index: 20;
 }
@@ -238,7 +232,6 @@ input {
 .page {
   width: 1312px;
   height: 792px;
-  /* border: 2px solid darkblue; */
   display: grid;
   grid-template-rows: auto 1fr;
   position: relative;
@@ -269,17 +262,14 @@ input {
 .writeable-section {
   display: grid;
   grid-template-rows: repeat(24, 1fr);
-  /* border: 1px solid green; */
   position: relative;
 }
 
 .paper-line {
   border-bottom: 2px solid var(--line-color);
-  /* z-index: 5; */
 }
 
 .button-section {
-  /* border: 1px solid orange; */
   width: 1312px;
   display: flex;
   justify-content: space-between;
@@ -300,21 +290,10 @@ input {
 }
 
 .page > button {
-  /* width: 200px; */
   position: absolute;
   right: 0;
   bottom: 56px;
 }
-
-/* form > * {
-  border: 1px solid blue;
-} */
-
-/* .create-project-dialog > form {
-  display: grid;
-  grid-template-rows: repeat(6, auto);
-  row-gap: 40px;
-} */
 
 .create-project-dialog > form > :nth-child(1),
 .create-project-dialog > form > :nth-child(2) {
@@ -376,7 +355,6 @@ input[type="text"] {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
-  /* border: 1px solid green; */
   row-gap: 8px;
 }
 
@@ -418,10 +396,6 @@ input[type="text"] {
 
 .dark-mode .dark-btn:active {
   background-color: var(--light-background);
-}
-
-.dark-mode .dialog-btns > :nth-child(2) {
-  color: var(--light-background);
 }
 
 select, option {
@@ -496,49 +470,26 @@ option[value="high"] {
   left: 0;
   width: 100%;
   height: 100%;
-  /* border: 3px solid darkred; */
-  /* display: grid;
-  grid-auto-rows: 50px; */
-  /* grid-template-rows: repeat(8, 1fr); */
-  /* row-gap: 28px; */
 }
 
 .project-block {
-  /* height: 94px; */
   width: 100%;
-  /* outline: 1px solid orange; */
-  /* position: relative; */
   margin-bottom: 31.25px;
 }
 
-/* .project-block h2 {
-  outline: 1px solid green;
-} */
-
 .project-block h2 {
   line-height: 1;
-  /* text-decoration: line-through; */
-  /* text-decoration-thickness: 2px; */
 }
 
 .text-section .project-text {
-  /* position: absolute;
-  top: -4px;
-  left: 8px; */
   text-indent: 8px;
 }
 
 .text-section .todo-text {
-  /* position: absolute;
-  top: 28px;
-  left: 32px; */
   text-indent: 32px;
 }
 
 .text-section .due-date-text {
-  /* position: absolute;
-  top: 59px;
-  left: 56px; */
   text-indent: 56px;
 }
 
@@ -553,7 +504,6 @@ option[value="high"] {
 
 .project-header {
   position: relative;
-  /* outline: 1px solid orange; */
 }
 
 .btn-add-todo {
