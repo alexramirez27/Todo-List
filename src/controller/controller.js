@@ -75,6 +75,46 @@ class Controller {
         });
     }
 
+    // #createTodoFromDialog() {
+    //     const dialog = document.querySelector(".create-todo-dialog");
+    //     const form = dialog.querySelector("form");
+
+    //     form.addEventListener("submit", (event) => {
+    //         event.preventDefault();
+
+    //         const currPage = this.#planner.pages[this.#planner.currPageNum];
+    //         if (currPage.numLinesUsed >= 24) {
+    //             alert("Cannot add todo. Page content is full!");
+    //             return;
+    //         }
+
+    //         const titleInput = document.querySelector(".create-todo-dialog #title");
+    //         const descInput = document.querySelector(".create-todo-dialog #description");
+    //         const dueDateInput = document.querySelector(".create-todo-dialog #due_date");
+    //         const priorityInput = document.querySelector(".create-todo-dialog #priority");
+
+    //         const dueDateText = format(parseISO(dueDateInput.value), "MMMM d, yyyy");
+
+    //         if (currPage.currentProject.titleInSet(titleInput.value)) {
+    //             alert("Cannot create To-Do! Another To-Do with the same name has already been created in this project!");
+    //             return;
+    //         }
+
+    //         const todo = new Todo(titleInput.value, descInput.value, dueDateText, priorityInput.value);
+            
+    //         currPage.currentProject.addTodo(todo);
+    //         currPage.updateNumLinesProjectAdded();
+
+    //         this.saveToLocalStorage();
+
+    //         form.reset();
+    //         dialog.close();
+
+    //         this.#displayCurrentPage();
+    //     });
+    // }
+
+
     #createTodoFromDialog() {
         const dialog = document.querySelector(".create-todo-dialog");
         const form = dialog.querySelector("form");
@@ -83,6 +123,7 @@ class Controller {
             event.preventDefault();
 
             const currPage = this.#planner.pages[this.#planner.currPageNum];
+
             if (currPage.numLinesUsed >= 24) {
                 alert("Cannot add todo. Page content is full!");
                 return;
@@ -93,7 +134,15 @@ class Controller {
             const dueDateInput = document.querySelector(".create-todo-dialog #due_date");
             const priorityInput = document.querySelector(".create-todo-dialog #priority");
 
-            const dueDateText = format(parseISO(dueDateInput.value), "MMMM d, yyyy");
+            const todoDueDate = parseISO(dueDateInput.value);
+            const projectDate = addDays(new Date(2026, 0, 1), currPage.currentProject.pageNum);
+
+            if (todoDueDate < projectDate) {
+                alert("Cannot create To-Do! The To-Do due date cannot be before the project's date!");
+                return;
+            }
+
+            const dueDateText = format(todoDueDate, "MMMM d, yyyy");
 
             if (currPage.currentProject.titleInSet(titleInput.value)) {
                 alert("Cannot create To-Do! Another To-Do with the same name has already been created in this project!");
@@ -113,6 +162,8 @@ class Controller {
             this.#displayCurrentPage();
         });
     }
+
+
 
     #modifyTodoFromDialog() {
         const dialog = document.querySelector(".modify-todo-dialog");
